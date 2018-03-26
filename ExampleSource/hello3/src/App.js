@@ -19,7 +19,7 @@ class App extends Component {
     super(props);
 
     this.state ={
-      list:list,
+      list,
     };
   }
   render() {
@@ -27,8 +27,12 @@ class App extends Component {
       <div className="App">
         {this.state.list.map(item=>
         <div key={item.number}>
-        <span>{item.name}</span>
-        <span><a href={item.url}>URL</a></span>
+        <span>{item.name}</span><br></br>
+        <span><a href={item.url}>  URL</a></span>
+        <br></br>
+        <span><button 
+        onClick={()=> this.onDismiss(item.name)} type="button">
+        onDismiss</button></span>
         </div>
         )}
       </div>
