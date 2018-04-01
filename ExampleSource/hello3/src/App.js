@@ -21,7 +21,17 @@ class App extends Component {
     this.state ={
       list,
     };
+    this.onDismiss = this.onDismiss.bind(this); //클래스 컴포넌트 클래스 메서드는 클래스 생성자에서 바인딩해야한다.
+
   }
+
+  onDismiss(name){
+    const isNotId = item => item.name !==name;
+    const updatedList = this.state.list.filter(isNotId);
+    this.setState({list:updatedList});
+    }
+  
+  
   render() {
     return (
       <div className="App">
@@ -32,12 +42,13 @@ class App extends Component {
         <br></br>
         <span><button 
         onClick={()=> this.onDismiss(item.name)} type="button">
-        onDismiss</button></span>
+        삭제</button></span>
         </div>
         )}
       </div>
     );
   }
 }
+
 
 export default App;
