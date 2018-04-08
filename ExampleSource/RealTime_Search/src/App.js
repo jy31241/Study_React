@@ -34,9 +34,11 @@ class App extends Component {
     this.setState({searchWord :event.target.value});
   }
 
-  onDismiss(){
-
-  }
+  onDismiss(name){
+    const isNotId = item => item.name !==name;
+    const updatedList = this.state.list1.filter(isNotId);
+    this.setState({list1:updatedList});
+    }
 
   render() {
 
@@ -62,6 +64,9 @@ class App extends Component {
             {item.age}<br></br>
             {item.sex}<br></br>
             {item.country}<br></br>
+            <span><button 
+              onClick={()=> this.onDismiss(item.name)} type="button">
+              삭제</button></span>
             </h1>
           )}
       </div>
